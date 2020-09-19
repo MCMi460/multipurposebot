@@ -1,0 +1,12 @@
+?kick - Kicks a specified member. Requires admin privileges.
+?ban - Bans a specified member. Requires admin privileges.
+?purge - Deletes specified number of messages in the channel the command was issued in. Requires admin privileges.
+?<math command> - Performs basic operations like: 'add, subtract, multiply, divide, modulo, and exponent'
+?ping - Checks the bot/server latency relationship
+?joined - Shows specified user's join date to that discord server
+?uptime - Displays the amount of time the bot has been up consecutively
+?time - Displays the current time (timezones vary)
+?roll - Rolls dice in NdN format
+?talk - Impersonates people! Use =talk @(someone) <text> to speak as them!
+?choose - Chooses between multiple choices
+?cool - Says if a <anything> is cool

@@ -10,3 +10,7 @@
 ?talk - Impersonates people! Use =talk @(someone) <text> to speak as them!
 ?choose - Chooses between multiple choices
 ?cool - Says if a <anything> is cool
+
+---
+
+Replace ? with your prefix of choice. That option is in the setup.py file for your bot. Enjoy!

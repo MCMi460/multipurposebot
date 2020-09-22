@@ -5,7 +5,6 @@ import datetime
 import time
 import sys
 import asyncio
-import opuslib
 import os
 from discord.utils import get
 from discord.ext.tasks import loop
@@ -13,18 +12,17 @@ from discord.ext.commands import Bot
 from random import choice
 import requests
 from discord.ext.commands import has_permissions
-from setup import myid, token, logschannelid, myserverid
+from setup import myid, token, logschannelid, myserverid, prefix
 
 description = 'MultiPurpose-Bot'
-bot = commands.Bot(command_prefix='?', description=description)
+bot = commands.Bot(command_prefix=prefix, description=description)
 counter = 0
-prefix = '?'
 typeStatusListen = discord.ActivityType.listening
 typeStatusStream = discord.ActivityType.streaming
 bot.remove_command("help")
 # Below are examples of activites. Not bad stuff, just mess around with it and have some fun
 # activity=discord.Activity(type=typeStatusListen, name=game))
-# await bot.change_presence(status=discord.Status.idle, activity=discord.Streaming(platform='Twitch', url='https://twitch.tv/<twitch>', name='?help | ?info', twitch_name="<twitch>"))
+# await bot.change_presence(status=discord.Status.idle, activity=discord.Streaming(platform='Twitch', url='https://twitch.tv/<twitch>', name=f"{prefix}help | {prefix}info", twitch_name="<twitch>"))
 
 @bot.event
 async def on_ready():
@@ -33,7 +31,7 @@ async def on_ready():
     print(f'Present in {len(bot.guilds)} servers.')
     print('------')
     global game
-    game = f"?help | Watching over {len(bot.guilds)} servers"
+    game = f"{prefix}help | Watching over {len(bot.guilds)} servers"
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=typeStatusListen, name=game))
     count.start()
 
@@ -128,18 +126,18 @@ async def help(ctx):
     embed.set_author(name="Github-Bot#1370", url="https://mi460.dev/mpbot/", icon_url="https://mi460.dev/images/cubeicontransparent.png")
     embed.set_footer(text="Check out my website and discord server!", icon_url="https://mi460.dev/images/bb3e970011dc603cf63eb73182a33122.png")
 
-    embed.add_field(name="`?kick`", value="Kicks a specified member. Requires admin priviledges.")
-    embed.add_field(name="`?ban`", value="Bans a specified member. Requires admin priviledges.")
-    embed.add_field(name="`?purge`", value="Deletes specified number of messages in the channel the command was issued in. Requires admin priviledges.")
-    embed.add_field(name="`?<math command>`", value="Performs basic operations like: `add, subtract, multiply, divide, modulo, and exponent`.")
-    embed.add_field(name="`?ping`", value="Checks the bot/server latency relationship.")
-    embed.add_field(name="`?joined`", value="Shows specified user's join date to that discord server.")
-    embed.add_field(name="`?uptime`", value="Displays the amount of time the bot has been up consecutively")
-    embed.add_field(name="`?time`", value="Displays the current time (timezones vary)")
-    embed.add_field(name="`?roll`", value="Rolls dice in NdN format")
-    embed.add_field(name="`?talk`", value="Impersonates people! Use =talk @(someone) <text> to speak as them!")
-    embed.add_field(name="`?choose`", value="Chooses between multiple choices")
-    embed.add_field(name="`?cool`", value="Says if a <anything> is cool")
+    embed.add_field(name=f"`{prefix}kick`", value="Kicks a specified member. Requires admin priviledges.")
+    embed.add_field(name=f"`{prefix}ban`", value="Bans a specified member. Requires admin priviledges.")
+    embed.add_field(name=f"`{prefix}purge`", value="Deletes specified number of messages in the channel the command was issued in. Requires admin priviledges.")
+    embed.add_field(name=f"`{prefix}<math command>`", value="Performs basic operations like: `add, subtract, multiply, divide, modulo, and exponent`.")
+    embed.add_field(name=f"`{prefix}ping`", value="Checks the bot/server latency relationship.")
+    embed.add_field(name=f"`{prefix}joined`", value="Shows specified user's join date to that discord server.")
+    embed.add_field(name=f"`{prefix}uptime`", value="Displays the amount of time the bot has been up consecutively")
+    embed.add_field(name=f"`{prefix}time`", value="Displays the current time (timezones vary)")
+    embed.add_field(name=f"`{prefix}roll`", value="Rolls dice in NdN format")
+    embed.add_field(name=f"`{prefix}talk`", value="Impersonates people! Use =talk @(someone) <text> to speak as them!")
+    embed.add_field(name=f"`{prefix}choose`", value="Chooses between multiple choices")
+    embed.add_field(name=f"`{prefix}cool`", value="Says if a <anything> is cool")
 
     await ctx.send(content="If a command doesn't work, make sure to check the permissions of the bot.", embed=embed)
 

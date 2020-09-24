@@ -60,7 +60,7 @@ async def count():
 @bot.command()
 async def stop(ctx):
     # This command forces the bot to stop running
-    if message.author.id == myid:
+    if ctx.author.id == myid:
         await ctx.send("Stopping...")
         print("Stopping...")
         await ctx.send("Session ended.")
@@ -69,7 +69,7 @@ async def stop(ctx):
 @bot.command()
 async def restart(ctx):
     # The most useful command I have ever written. Do not disregard this one, fellow developer
-    if message.author.id == myid:
+    if ctx.author.id == myid:
         await ctx.send("Restarting/ending session...")
         print("Restarting...")
         os.execl(sys.executable, sys.executable, *sys.argv)

@@ -249,12 +249,11 @@ async def choose(ctx, *choices: str):
     await ctx.send(f"`{random.choice(choices)}` was chosen out of `{choices}`")
 
 @bot.command(pass_context = True)
-async def getuser(ctx, userid: str):
+async def getuser(ctx, user:discord.Member = None):
     # Gets basic user data from a mentioned user
-    userid = userid.replace("<@", "")
-    userid = userid.replace("!", "")
-    userid = userid.replace(">", "")
-    user = bot.get_user(int(userid))
+    if not user:
+        await ctx.send("Please specify a user")
+        return
     embed = discord.Embed(title="Click here for support", colour=discord.Colour(0x4287f5), url="https://mi460.dev/bugs", description=f"Info about `{user.name}#{user.discriminator}`")
     embed.set_author(name=f"{user.name}#{user.discriminator}", url=f"{user.avatar_url}", icon_url=f"{user.avatar_url}")
     embed.add_field(name=f"{user.display_name}'s join date", value=f"User account joined server at `{ctx.guild.get_member(int(userid)).joined_at}`")

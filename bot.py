@@ -8,10 +8,9 @@ import asyncio
 import os
 from discord.utils import get
 from discord.ext.tasks import loop
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot, has_permissions
 from random import choice
 import requests
-from discord.ext.commands import has_permissions
 from setup import myid, token, logschannelid, myserverid, prefix
 
 description = 'MultiPurpose-Bot'

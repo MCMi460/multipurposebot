@@ -142,22 +142,34 @@ async def help(ctx):
 
 @bot.command(description='For adding numbers.')
 async def add(ctx, left: int, right: int):
+    # Drop the calculation if the input is none.
+    if left == None or right == None:
+        await ctx.send("Please give proper values to add.")
     # Finds the sum of two numbers
-    await ctx.send(left + right)
+    await ctx.send(f"The sum of {left} and {right} is: {left + right}")
 
 @bot.command(description='For subtracting numbers.')
 async def subtract(ctx, left: int, right: int):
+    # Drop the calculation if the input is none.
+    if left == None or right == None:
+        await ctx.send("Please give proper values to subtract.")
     # Finds the difference between two numbers
-    await ctx.send(left - right)
+    await ctx.send(f"The difference of {left} and {right} is: {left - right}")
 
 @bot.command(description='For multiplying numbers.')
 async def multiply(ctx, left: int, right: int):
+    # Drop the calculation if the input is none.
+    if left == None or right == None:
+        await ctx.send("Please give proper values to multiply.")
     # Finds the product of two numbers
     await ctx.send(left * right)
 
 @bot.command(description='For dividing numbers.')
 async def divide(ctx, left: int, right: int):
-    # Finds the quotient of two numbers
+    # Drop the calculation if the input is none.
+    if left == None or right == None:
+        await ctx.send("Please give proper values to divide.")
+    # Finds the result of two numbers
     await ctx.send(left / right)
 
 @bot.command(description='For dividing numbers, but...')
@@ -171,14 +183,14 @@ async def exponent(ctx, left: int, right: int):
     await ctx.send(left ** right)
 
 @bot.command()
-@commands.has_permissions(administrator=True)
-async def kick(ctx, member:discord.Member = None):
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, member:discord.Member = None, reason: str = "None"):
     # Kicks a specified member. Remember, the command only has as much power as the bot
     if not member:
         await ctx.send("Please specify a member")
         return
     await member.kick()
-    await ctx.send(f"{member.mention} has been kicked by {ctx.author.mention}.")
+    await ctx.send(f"{member.mention} has been kicked by {ctx.author.mention}.\nReason: {reason}")
 
 @kick.error
 async def kick_error(ctx, error):
@@ -188,29 +200,29 @@ async def kick_error(ctx, error):
         await ctx.send("You do not have the permissons to do that.")
 
 @bot.command()
-@commands.has_permissions(administrator=True)
-async def ban(ctx, member:discord.Member = None):
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, member:discord.Member = None, reason: str = "None"):
     # Bans a specified member. Remember, the command only has as much power as the bot
     if not member:
         await ctx.send("Please specify a member.")
         return
     await member.ban()
-    await ctx.send(f"{member.mention} has been banned by {ctx.author.mention}.")
+    await ctx.send(f"{member.mention} has been banned by {ctx.author.mention}.\nReason: {reason}")
 
 @ban.error
-async def kick_error(ctx, error):
+async def ban_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You do not have the permissions to ban this person.")
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You do not have the permissons to do that.")
 
 @bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
+@commands.has_permissions(manage_messages=True)
 async def purge(ctx, limit: int):
     # Deletes a large, specified amount of messages from a channel. Requires admin priviledges
     await ctx.message.delete()
     await ctx.channel.purge(limit=limit)
-    await ctx.send('Cleared by {}'.format(ctx.author.mention))
+    await ctx.send('{} Messages cleared by {}'.format(limit, ctx.author.mention))
 
 @purge.error
 async def clear_error(ctx, error):
@@ -220,7 +232,7 @@ async def clear_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     # Shows the current Discord/Bot latency relationship
-    await ctx.send('`Pong! My current latency is {0} seconds.`'.format(round(bot.latency, 1)))
+    await ctx.send('`Pong! My current latency is {0} seconds.`'.format(round(bot.latency)))
 
 @bot.command(pass_context = True)
 async def say(ctx, *, mg = None):
@@ -250,9 +262,8 @@ async def choose(ctx, *choices: str):
 @bot.command(pass_context = True)
 async def getuser(ctx, user:discord.Member = None):
     # Gets basic user data from a mentioned user
-    if not user:
-        await ctx.send("Please specify a user")
-        return
+    if not user:     # If user is not mentioned, show the stats of the msg author
+        user = ctx.author
     embed = discord.Embed(title="Click here for support", colour=discord.Colour(0x4287f5), url="https://mi460.dev/bugs", description=f"Info about `{user.name}#{user.discriminator}`")
     embed.set_author(name=f"{user.name}#{user.discriminator}", url=f"{user.avatar_url}", icon_url=f"{user.avatar_url}")
     embed.add_field(name=f"{user.display_name}'s join date", value=f"User account joined server at `{ctx.guild.get_member(int(userid)).joined_at}`")

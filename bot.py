@@ -268,7 +268,7 @@ async def getuser(ctx, user:discord.Member = None):
         user = ctx.author
     embed = discord.Embed(title="Click here for support", colour=discord.Colour(0x4287f5), url="https://mi460.dev/bugs", description=f"Info about `{user.name}#{user.discriminator}`")
     embed.set_author(name=f"{user.name}#{user.discriminator}", url=f"{user.avatar_url}", icon_url=f"{user.avatar_url}")
-    embed.add_field(name=f"{user.display_name}'s join date", value=f"User account joined server at `{ctx.guild.get_member(int(userid)).joined_at}`")
+    embed.add_field(name=f"{user.display_name}'s join date", value=f"User account joined server at `{ctx.guild.get_member(user.id).joined_at}`")
     embed.add_field(name=f"{user.display_name}'s creation date", value=f"User account created at `{user.created_at}`")
     await ctx.send(embed=embed)
 

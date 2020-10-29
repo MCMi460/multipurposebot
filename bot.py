@@ -14,7 +14,9 @@ import requests
 from setup import myid, token, logschannelid, myserverid, prefix
 
 description = 'MultiPurpose-Bot'
-bot = commands.Bot(command_prefix=prefix, description=description)
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix=prefix, description=description,intents=intents)
 counter = 0
 typeStatusListen = discord.ActivityType.listening
 typeStatusStream = discord.ActivityType.streaming

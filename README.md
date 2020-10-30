@@ -6,6 +6,8 @@ You can feel free to host the bot, but I've got a [free of charge self-hosted ve
 
 Remember, if you're hosting the bot yourself, you'll need to make sure you have all the modules imported in [bot.py][bot].
 
+> Extra notice: You'll need to enable the "Server Members" Intent on your bot's application screen if you want the "getuser" command to work for users other than yourself.
+
 ---
 
 You don't have to give credit to me. That's not what Github is for (in my opinion).

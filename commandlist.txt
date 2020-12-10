@@ -7,7 +7,7 @@
 ?uptime - Displays the amount of time the bot has been up consecutively
 ?time - Displays the current time (timezones vary)
 ?roll - Rolls dice in NdN format
-?talk - Impersonates people! Use =talk @(someone) <text> to speak as them!
+?talk - Impersonates people! Use ?talk @(someone) <text> to speak as them!
 ?choose - Chooses between multiple choices
 ?cool - Says if a <anything> is cool
 

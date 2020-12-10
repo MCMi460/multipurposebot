@@ -136,7 +136,7 @@ async def help(ctx):
     embed.add_field(name=f"`{prefix}uptime`", value="Displays the amount of time the bot has been up consecutively")
     embed.add_field(name=f"`{prefix}time`", value="Displays the current time (timezones vary)")
     embed.add_field(name=f"`{prefix}roll`", value="Rolls dice in NdN format")
-    embed.add_field(name=f"`{prefix}talk`", value="Impersonates people! Use =talk @(someone) <text> to speak as them!")
+    embed.add_field(name=f"`{prefix}talk`", value="Impersonates people! Use ?talk @(someone) <text> to speak as them!")
     embed.add_field(name=f"`{prefix}choose`", value="Chooses between multiple choices")
     embed.add_field(name=f"`{prefix}cool`", value="Says if a <anything> is cool")
 

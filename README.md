@@ -10,6 +10,8 @@ You can feel free to host the bot, but I've got a [free of charge self-hosted ve
 
 \*Not all features available can be used in the public version
 
+*(Minor Update 1/11/21: In case you haven't heard yet, Discord now has [SLASH Commands!][slashc] However, I'm sorry to disappoint when I say that discord.py has no plans as of now to add support for them in an update. Until their decision is changed and support is added, there will not be an update for this repository with slash commands. The main function of this bot and all of its commands are unaffected by this, but the visual integration of commands on a client's display is not available. Thank you.)*
+
 ---
 ## Requirements:
 
@@ -35,3 +37,4 @@ You don't have to give credit to me. That's not what Github is for (in my opinio
 [bot]: https://github.com/MCMi460/multipurposebot/blob/master/bot.py
 [commands]: https://raw.githubusercontent.com/MCMi460/multipurposebot/master/commandlist.txt
 [support]: https://mi460.dev/bugs
+[slashc]: https://discord.com/developers/docs/interactions/slash-commands

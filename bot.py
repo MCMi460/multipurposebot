@@ -325,7 +325,7 @@ async def talk(ctx, userid: str, *, text = None):
         await webhook.send(text)
         await webhook.delete()
         # Get rid of the next line of code if you'd like it to be untraceable.
-        await user.send(f"Psssst.... {ctx.author} is impersonating you in {ctx.channel}.")
+        await user.send(f"Psssst.... {ctx.author} is impersonating you in <#{ctx.channel.id}>.")
     if not text:
         await ctx.author.send("Please specify a message to send.")
 

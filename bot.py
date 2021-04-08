@@ -124,7 +124,7 @@ async def help(ctx):
     embed = discord.Embed(title="Delta Inc.", colour=discord.Colour(0x2EA64E), url="https://mi460.dev/", description="```Commands for Github-Bot```")
 
     embed.set_thumbnail(url="https://mi460.dev/images/cubeicon.png")
-    embed.set_author(name="Github-Bot#1370", url="https://mi460.dev/mpbot/", icon_url="https://mi460.dev/images/cubeicontransparent.png")
+    embed.set_author(name=f"{bot.user.name}#{bot.user.discriminator}", url="https://mi460.dev/mpbot/", icon_url="https://mi460.dev/images/cubeicontransparent.png")
     embed.set_footer(text="Check out my website and discord server!", icon_url="https://mi460.dev/images/bb3e970011dc603cf63eb73182a33122.png")
 
     embed.add_field(name=f"`{prefix}kick`", value="Kicks a specified member. Requires admin priviledges.")
